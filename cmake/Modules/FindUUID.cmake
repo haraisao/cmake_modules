@@ -7,7 +7,8 @@
 # portability
 # UUID_LIBRARIES - full path to the libraries
 if(WIN32)
-  find_library(UUID_LIBRARIES NAMES Rpcrt4 PATH)
+  #find_library(UUID_LIBRARIES NAMES Rpcrt4 PATH)
+  set(UUID_LIBRARIES "Rpcrt4.lib")
 
   if(UUID_LIBRARIES)
     set(UUID_FOUND true)
