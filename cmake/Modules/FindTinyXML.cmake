@@ -54,8 +54,13 @@ if(TinyXML_ROOT_DIR)
 endif()
 
 # Find headers and libraries
-find_path(TinyXML_INCLUDE_DIR NAMES tinyxml.h PATH_SUFFIXES "tinyxml" ${TinyXML_INCLUDE_PATH})
-find_library(TinyXML_LIBRARY  NAMES tinyxml   PATH_SUFFIXES "tinyxml" ${TinyXML_LIBRARY_PATH})
+if(WIN32)
+  find_path(TinyXML_INCLUDE_DIR NAMES tinyxml.h PATH_SUFFIXES "tinyxml/include" ${TinyXML_INCLUDE_PATH})
+  find_library(TinyXML_LIBRARY  NAMES tinyxml   PATH_SUFFIXES "tinyxml/lib" ${TinyXML_LIBRARY_PATH})
+else()
+  find_path(TinyXML_INCLUDE_DIR NAMES tinyxml.h PATH_SUFFIXES "tinyxml" ${TinyXML_INCLUDE_PATH})
+  find_library(TinyXML_LIBRARY  NAMES tinyxml   PATH_SUFFIXES "tinyxml" ${TinyXML_LIBRARY_PATH})
+endif()
 
 mark_as_advanced(TinyXML_INCLUDE_DIR
                  TinyXML_LIBRARY)
